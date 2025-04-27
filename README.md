@@ -84,6 +84,8 @@ Example of a Customer Managed Policy:
  ]
 }
 
+```
+
 In this example:
 
 Allows listing the contents of the “test-bucket” in Amazon S3.
