@@ -62,3 +62,34 @@ These managed policies are designed to make it easy to assign common permissions
 ***2.Customer managed policies***
 ![image](https://github.com/user-attachments/assets/7deb2d08-9a4c-4db6-8ed3-e6e9320082ce)
 
+Managed policies that you create and manage in your AWS account. Customer managed policies provide more precise control over your policies than AWS managed policies or in other words They provide more flexibility and control over the permissions you want to grant. You can create and attach customer managed policies to IAM identities.
+
+You can create standalone policies in your own AWS account that you can attach to principal entities (users, groups, and roles). You create these customer managed policies for your specific use cases, and you can change and update them as often as you like. Like AWS managed policies, when you attach a policy to a principal entity, you give the entity the permissions that are defined in the policy. When you update permissions in the policy, the changes are applied to all principal entities that the policy is attached to.
+
+Example of a Customer Managed Policy:
+
+```{
+ "Version": "2012–10–17",
+ "Statement": [
+ {
+ "Effect": "Allow",
+ "Action": "s3:ListBucket",
+ "Resource": "arn:aws:s3:::test-bucket"
+ },
+ {
+ "Effect": "Deny",
+ "Action": "s3:*",
+ "Resource": "arn:aws:s3:::test-bucket/sensitive-data/*"
+ }
+ ]
+}
+
+In this example:
+
+Allows listing the contents of the “test-bucket” in Amazon S3.
+Denies any S3 action on objects within the “sensitive-data” prefix of the “test-bucket.”
+
+***⇒ b) Inline policies:***
+![image](https://github.com/user-attachments/assets/877f4500-2a2e-4d22-a21b-1aaad7452c07)
+
+
