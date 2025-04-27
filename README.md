@@ -113,7 +113,10 @@ Create a customer-managed policy requiring MFA for actions like:
     "Action": ["s3:DeleteBucket", "iam:ChangePassword"],
     "Resource": "*",
     "Condition": {"BoolIfExists": {"aws:MultiFactorAuthPresent": false}}
-}```
+}
+```
+
+
 Apply this to all IAM users.
 
 ***3. Cross-Account Access Delegation***
@@ -121,6 +124,7 @@ Scenario: A company has a central AWS account for logging and wants to allow oth
 
 Solution:
 Define a customer-managed policy in the central account allowing:
+
 ```
 json
 {
@@ -129,6 +133,7 @@ json
     "Resource": "arn:aws:logs:us-east-1:123456789012:log-group:Prod-Logs:*"
 }
 ```
+
 Attach this to an IAM role trusted by other accounts.
 
 ***4. Temporary Access for Contractors***
@@ -157,27 +162,28 @@ Define a customer-managed policy that:
 Allows full access in Dev ("Resource": "arn:aws:ec2:us-east-1:123456789012:instance/*")
 Denies Delete* actions in Prod ("Resource": "arn:aws:ec2:us-east-1:123456789012:instance/prod-*")
 
-7. Automated Backup Policies
+***7. Automated Backup Policies***
 Scenario: An IT team wants to allow automated backups but restrict manual deletions.
 
 Solution:
 
 Create a policy allowing backup:StartBackupJob but denying backup:DeleteBackupVault.
 
-8. Cost Optimization (Restricting Region/Service Usage)
+***8. Cost Optimization (Restricting Region/Service Usage)***
 Scenario: A company wants to limit deployments to specific regions to control costs.
 
 Solution:
 
 Define a customer-managed policy with:
 
+```
 json
 {
     "Effect": "Deny",
     "Action": ["ec2:RunInstances", "rds:CreateDBInstance"],
     "NotResource": ["arn:aws:ec2:us-east-1::*", "arn:aws:rds:us-east-1::*"]
 }
-
+```
 
 
 
