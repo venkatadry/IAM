@@ -93,6 +93,96 @@ In this example:
 Allows listing the contents of the “test-bucket” in Amazon S3.
 Denies any S3 action on objects within the “sensitive-data” prefix of the “test-bucket.”
 
+***1. Least Privilege Enforcement***
+Scenario: A startup wants to ensure developers only have access to their project’s resources.
+
+Solution:
+Define a customer-managed policy restricting access to:
+
+Specific S3 buckets (arn:aws:s3:::project-team1-*)
+Only certain EC2 tags ("Condition": {"StringEquals": {"aws:ResourceTag/Project": "Alpha"}})
+
+***2. Compliance & Security Policies***
+Scenario: A financial firm must enforce MFA (Multi-Factor Authentication) for sensitive operations.
+Solution:
+Create a customer-managed policy requiring MFA for actions like:
+
+```json
+{
+    "Effect": "Deny",
+    "Action": ["s3:DeleteBucket", "iam:ChangePassword"],
+    "Resource": "*",
+    "Condition": {"BoolIfExists": {"aws:MultiFactorAuthPresent": false}}
+}```
+Apply this to all IAM users.
+
+***3. Cross-Account Access Delegation***
+Scenario: A company has a central AWS account for logging and wants to allow other accounts to send logs.
+
+Solution:
+Define a customer-managed policy in the central account allowing:
+```
+json
+{
+    "Effect": "Allow",
+    "Action": ["logs:CreateLogStream", "logs:PutLogEvents"],
+    "Resource": "arn:aws:logs:us-east-1:123456789012:log-group:Prod-Logs:*"
+}
+```
+Attach this to an IAM role trusted by other accounts.
+
+***4. Temporary Access for Contractors***
+Scenario: A third-party vendor needs time-bound access to an S3 bucket.
+
+Solution:
+Create a customer-managed policy with a time-based condition:
+```
+json
+{
+    "Effect": "Allow",
+    "Action": ["s3:GetObject"],
+    "Resource": "arn:aws:s3:::confidential-data/*",
+    "Condition": {
+        "DateLessThan": {"aws:CurrentTime": "2024-12-31T23:59:59Z"}
+    }
+}
+```
+Attach to the contractor’s IAM role.
+
+***5. Environment-Specific Permissions (Dev/Prod)***
+Scenario: A company wants to prevent accidental deletions in production.
+
+Solution:
+Define a customer-managed policy that:
+Allows full access in Dev ("Resource": "arn:aws:ec2:us-east-1:123456789012:instance/*")
+Denies Delete* actions in Prod ("Resource": "arn:aws:ec2:us-east-1:123456789012:instance/prod-*")
+
+7. Automated Backup Policies
+Scenario: An IT team wants to allow automated backups but restrict manual deletions.
+
+Solution:
+
+Create a policy allowing backup:StartBackupJob but denying backup:DeleteBackupVault.
+
+8. Cost Optimization (Restricting Region/Service Usage)
+Scenario: A company wants to limit deployments to specific regions to control costs.
+
+Solution:
+
+Define a customer-managed policy with:
+
+json
+{
+    "Effect": "Deny",
+    "Action": ["ec2:RunInstances", "rds:CreateDBInstance"],
+    "NotResource": ["arn:aws:ec2:us-east-1::*", "arn:aws:rds:us-east-1::*"]
+}
+
+
+
+
+
+
 ***⇒ b) Inline policies:***
 
 ![image](https://github.com/user-attachments/assets/877f4500-2a2e-4d22-a21b-1aaad7452c07)
