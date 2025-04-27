@@ -55,7 +55,9 @@ These are predefined policies created and managed by AWS. Examples include the A
 AWS managed policies make it convenient for you to assign appropriate permissions to users, groups, and roles. It is faster than writing the policies yourself and includes permissions for many common use cases. You cannot change the permissions defined in AWS managed policies. And These policies are updated as new services and features are introduced. Some examples of AWS Managed Policies include:
 
 ***Administrator Access:*** Provides full access to AWS services and resources. This policy is intended for administrators who need complete control over all resources.
+
 ***Read Only Access:*** Grants read-only access to all AWS services and resources. Users with this policy can view configurations and details but cannot make changes.
+
 ***AmazonS3FullAccess:*** Grants full access to Amazon S3, allowing users to perform any action on S3 buckets and objects.
 These managed policies are designed to make it easy to assign common permissions without manually specifying each individual permission. You can attach these policies directly to IAM users, groups, or roles
 
