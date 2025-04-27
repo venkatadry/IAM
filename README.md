@@ -159,8 +159,15 @@ Scenario: A company wants to prevent accidental deletions in production.
 
 Solution:
 Define a customer-managed policy that:
-Allows full access in Dev ("Resource": "arn:aws:ec2:us-east-1:123456789012:instance/*")
-Denies Delete* actions in Prod ("Resource": "arn:aws:ec2:us-east-1:123456789012:instance/prod-*")
+Allows full access in Dev
+```
+("Resource": "arn:aws:ec2:us-east-1:123456789012:instance/*")
+```
+
+Denies Delete* actions in Prod
+```
+("Resource": "arn:aws:ec2:us-east-1:123456789012:instance/prod-*")
+```
 
 ***7. Automated Backup Policies***
 Scenario: An IT team wants to allow automated backups but restrict manual deletions.
