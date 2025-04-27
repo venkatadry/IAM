@@ -168,6 +168,31 @@ Denies Delete* actions in Prod
 ```
 ("Resource": "arn:aws:ec2:us-east-1:123456789012:instance/prod-*")
 ```
+```{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyTerminateEC2InProd",
+            "Effect": "Deny",
+            "Action": "ec2:TerminateInstances",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/Environment": "prod"
+                }
+            }
+        }
+    ]
+}
+```
+Explanation:
+
+It denies the ec2:TerminateInstances action.
+
+Only if the instance has the tag Environment=prod.
+
+Other EC2 operations (like start/stop) are still allowed unless you deny them too
+
 
 ***7. Automated Backup Policies***
 Scenario: An IT team wants to allow automated backups but restrict manual deletions.
