@@ -379,14 +379,16 @@ ACLs play a crucial role in managing permissions by allowing administrators to d
 ***Common Uses and Impact on Access Control:***
 
 ***File Systems:*** In file systems, ACLs are used to control access to files and directories. For example, an ACL on a file may specify which users or groups are allowed to read, write, or execute the file. This allows administrators to restrict access to sensitive files or directories based on user identity or group membership.
-***Network Resources:***ACLs are commonly used in network devices such as routers, switches, and firewalls to control traffic flow and enforce security policies. By configuring ACLs on network interfaces or ports, administrators can filter incoming and outgoing traffic based on source and destination IP addresses, protocols, and ports.
+
+***Network Resources:*** ACLs are commonly used in network devices such as routers, switches, and firewalls to control traffic flow and enforce security policies. By configuring ACLs on network interfaces or ports, administrators can filter incoming and outgoing traffic based on source and destination IP addresses, protocols, and ports.
+
 ***Cloud Services:*** In cloud computing environments, ACLs are used to control access to cloud resources such as storage buckets, databases, and virtual machines. By defining ACLs on these resources, administrators can manage access permissions for users, applications, and services accessing the cloud infrastructure.
 Database Systems: ACLs are employed in database management systems to regulate access to database objects such as tables, views, and stored procedures. Database ACLs specify which users or roles have permission to perform operations such as querying data, modifying schema, or executing SQL commands.
+
 ***Web Servers:*** ACLs are utilized in web servers to control access to web content and applications. By configuring ACLs on directories or files within the web server's document root, administrators can restrict access to sensitive files, directories, or web applications based on client IP addresses, authentication credentials, or other criteria.
 Overall, ACLs provide a flexible and powerful mechanism for managing permissions at the resource level, allowing administrators to enforce access control policies tailored to their specific security requirements. However, it's essential to carefully design and configure ACLs to avoid unintended access permissions or security vulnerabilities. Regular audits and reviews of ACL configurations are recommended to ensure effective access control and mitigate security risks.
 
 ***6️⃣ Session Policies***
-
 
 Session policies in AWS Identity and Access Management (IAM) are temporary permissions that are dynamically applied to a user or role during a specific session. Unlike identity-based policies, which are attached to IAM entities such as users, groups, or roles, session policies are not stored or attached directly. Instead, they are passed as parameters when initiating a session, typically through services like AWS Security Token Service (STS) or AWS Identity Federation.
 
@@ -401,13 +403,11 @@ Features:
 ***Use Cases:***
 
 ***Temporary Access:*** Session policies are commonly used to grant temporary access to AWS resources for users or applications that require short-term permissions.
-***Cross-Account Access:***
 
+***Cross-Account Access:***
 Organizations often use session policies to enable cross-account access, allowing users from one AWS account to assume roles in another account with specific permissions.
 
 ***3. Federated Identity Access:***
-
-
 Session policies facilitate federated identity access scenarios, where users authenticate through external identity providers and receive temporary credentials with scoped permissions.
 
 ***4. Least Privilege Principle:***
