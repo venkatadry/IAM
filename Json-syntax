@@ -1,1 +1,34 @@
 
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "AllowListUsers",
+			"Effect": "Allow",
+			"Action": ["iam:ListUsers", "iam:ListGroups"],
+			"Resource": "*"
+		}
+	]
+}
+
+This Policy willl allow userto lisr users and groups
+Action: iam:ListUsers – Grants permission to list all IAM users.
+Resource: "*" – Required because ListUsers is a list-type action that operates at the account level and doesn’t support specific ARNs
+
+####This will list all buckets#######
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Action": [
+				"s3:ListAllMyBuckets",
+        "s3:ListBucket"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	]
+}
+
+Resource: "*"
+The asterisk means "all resources." For ListAllMyBuckets, this makes sense because this API action doesn't operate on a specific bucket - it lists all buckets
