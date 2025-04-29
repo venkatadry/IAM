@@ -30,5 +30,77 @@ Resource: "*" – Required because ListUsers is a list-type action that operates
 	]
 }
 
+
+###s3 get and put####
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Statement1",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:ListAllMyBuckets"  // Add this line to allow the user to list all buckets
+      ],
+      "Resource": [
+        "arn:aws:s3:::s36699",        // Allow listing contents of s36699 bucket
+        "arn:aws:s3:::s36699/*",      // Allow access to objects in s36699 bucket
+        "arn:aws:s3:::"               // Allow listing all buckets in the account
+      ]
+    }
+  ]
+}
 Resource: "*"
 The asterisk means "all resources." For ListAllMyBuckets, this makes sense because this API action doesn't operate on a specific bucket - it lists all buckets
+
+
+S3 READ only Access#######
+```{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:Get*",
+                "s3:List*",
+                "s3:Describe*",
+                "s3-object-lambda:Get*",
+                "s3-object-lambda:List*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+
+Version 3 of AmazonS3ReadOnlyAccess
+For version 3.The following is added. how do we make terraform changes in our environmnet?
+"s3:Describe*",
+
+
+
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Statement1",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:ListAllMyBuckets"  // Add this line to allow the user to list all buckets
+      ],
+      "Resource": [
+        "arn:aws:s3:::s36699",        // Allow listing contents of s36699 bucket
+        "arn:aws:s3:::s36699/*",      // Allow access to objects in s36699 bucket
+        "arn:aws:s3:::"               // Allow listing all buckets in the account
+      ]
+    }
+  ]
+}
