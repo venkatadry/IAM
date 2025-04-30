@@ -52,9 +52,16 @@ Managed policies come in two types:
 
 ***1. AWS managed policies:***
 ![image](https://github.com/user-attachments/assets/6599b558-df1e-407c-a0d6-62661535b12d)
-These are predefined policies created and managed by AWS. Examples include the AWS managed policies for read-only access, administrator access, and more. You can attach these policies to your IAM identities.
+| Feature                         | Description                                                                 |
+|----------------------------------|-----------------------------------------------------------------------------|
+| **Created by AWS**              | Maintained and updated by AWS.                                              |
+| **Predefined use cases**        | Include policies like `AmazonS3ReadOnlyAccess`, `AdministratorAccess`, etc. |
+| **Attachable to identities**    | Can be attached to IAM **users**, **groups**, and **roles**.               |
+| **Not customizable**            | You **cannot modify** the permissions in these policies.                   |
+| **Auto-updated**                | AWS **updates** the policies to support **new services and features**.     |
+| **Quick to use**                | Saves time compared to writing custom policies.                             | 
 
-AWS managed policies make it convenient for you to assign appropriate permissions to users, groups, and roles. It is faster than writing the policies yourself and includes permissions for many common use cases. You cannot change the permissions defined in AWS managed policies. And These policies are updated as new services and features are introduced. Some examples of AWS Managed Policies include:
+Some examples of AWS Managed Policies include:
 
 ***Administrator Access:*** Provides full access to AWS services and resources. This policy is intended for administrators who need complete control over all resources.
 
