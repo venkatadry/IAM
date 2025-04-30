@@ -126,3 +126,18 @@ But it only allow m to list objects in testabpvc bucket
 		}
 	]
 }
+
+#####syntax#####
+
+{
+	"Version": "2012-10-17",
+	"Statement": [ 
+	{
+	"one statement"
+	}
+	{
+	"second statement"
+	}
+	
+	]
+}
