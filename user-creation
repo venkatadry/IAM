@@ -1,0 +1,104 @@
+resource "aws_iam_user" "test_user" {
+  name                 = "test-user"
+  force_destroy        = true  # Optional: to allow user deletion with access keys
+  tags = {
+    "tag-key" = "tag-value"
+  }
+}
+
+resource "aws_iam_user_login_profile" "test_user_login" {
+  user                    = aws_iam_user.test_user.name
+ # password                = "Javier@3399"
+  password_reset_required = false
+}
+
+resource "aws_iam_access_key" "test_user" {
+  user = aws_iam_user.test_user.name
+}
+
+resource "aws_iam_user_policy" "test_user_policy" {
+  name = "test" #name of the inline policy attached to user
+  user = aws_iam_user.test_user.name
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Action = [
+          "s3:ListAllMyBuckets",
+          "s3:ListBucket"
+        ],
+        Effect   = "Allow",
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+output "access_key_id" {
+  value     = aws_iam_access_key.test_user.id
+  sensitive = true
+}
+
+####Able to upload the files###
+policy = jsonencode({
+  Version = "2012-10-17",
+  Statement = [
+    {
+      Action = [
+        "s3:ListAllMyBuckets",
+        "s3:ListBucket",
+        "s3:PutObject"
+      ],
+      Effect   = "Allow",
+      Resource = "*"
+    }
+  ]
+})
+
+
+output "secret" {
+  value     = aws_iam_access_key.test_user.secret
+  sensitive = true
+}
+Created user test-user and able to list buckets and see the contents in the bucket
+
+
+
+
+s3:ListAllMyBuckets
+Action: Lists all buckets that the authenticated AWS account/user has permission to see.
+
+Used when: A user (or AWS Console) loads the list of all your S3 buckets.
+
+Resource: This action requires Resource: "*" (i.e., it's global, not tied to a specific bucket).
+
+Common in UI access: Needed when you're using the AWS Console or CLI and want to see the list of available buckets.
+
+Example use:
+json
+Copy
+Edit
+{
+  "Effect": "Allow",
+  "Action": "s3:ListAllMyBuckets",
+  "Resource": "*"
+}
+📂 s3:ListBucket
+Action: Lists the contents (objects) inside a specific bucket.
+
+Used when: A user accesses a particular bucket and needs to see what's inside.
+
+Resource: Must be the bucket ARN, like arn:aws:s3:::my-bucket
+
+Does not show other buckets — only lists the files/keys in the one you're allowed to access.
+
+Example use:
+json
+Copy
+Edit
+{
+  "Effect": "Allow",
+  "Action": "s3:ListBucket",
+  "Resource": "arn:aws:s3:::my-bucket"
+}
