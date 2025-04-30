@@ -235,9 +235,15 @@ json
 ***⇒ b) Inline policies:***
 
 ![image](https://github.com/user-attachments/assets/877f4500-2a2e-4d22-a21b-1aaad7452c07)
-Inline policies are policies that you embed directly into a single IAM identity. Unlike managed policies, inline policies are part of the IAM identity to which they are attached. Inline policies maintain a strict one-to-one relationship between a policy and an identity. When you delete the IAM identity, the inline policy is also deleted. Inline policies provide a way to customize permissions for a specific IAM identity without the need for separate policy management.
+| Feature                     | Inline Policies                   | Managed Policies                        |
+|-----------------------------|------------------------------------|------------------------------------------|
+| **Reusability**             | ❌ No                              | ✅ Yes                                   |
+| **Lifecycle**               | Tied to identity                   | Separate from identity                   |
+| **Use Case**                | Unique, specific needs             | Broad, reusable permissions              |
+| **Management complexity**   | Higher (at scale)                  | Lower (centralized)                      |
+| **Customization**           | ✅ Fully customizable              | ❌ AWS managed policies not editable     |
 
-Inline policies are created and managed directly within the IAM user, group, or role to which they are attached. When you create an inline policy, it is associated with that specific IAM entity. Inline policies are included as part of the IAM entity’s configuration. You’ll find them in the AWS Management Console, AWS Command Line Interface (CLI), or AWS SDKs when viewing the details of the IAM entity. Inline policies provide flexibility in defining and customizing permissions for a specific IAM entity. You can tailor the permissions precisely to the needs of that entity without affecting others.
+You can tailor the permissions precisely to the needs of that entity without affecting others.
 
 Consider an example of an inline policy in JSON format:
 
