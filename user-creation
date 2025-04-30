@@ -102,3 +102,27 @@ Edit
   "Action": "s3:ListBucket",
   "Resource": "arn:aws:s3:::my-bucket"
 }
+
+
+####
+I have created the policy
+It lists all the buckes
+But it only allow m to list objects in testabpvc bucket
+
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "VisualEditor0",
+			"Effect": "Allow",
+			"Action": "s3:ListBucket",
+			"Resource": "arn:aws:s3:::testabpvc"
+		},
+		{
+			"Sid": "VisualEditor1",
+			"Effect": "Allow",
+			"Action": "s3:ListAllMyBuckets",
+			"Resource": "*"
+		}
+	]
+}
