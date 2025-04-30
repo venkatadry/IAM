@@ -268,6 +268,8 @@ When making the decision between managed policies and inline policies in AWS IAM
 
 
 ***2️⃣ Resource-based policies***
+
+
 ![image](https://github.com/user-attachments/assets/84cdd5b6-2da4-432b-b8b1-e91f0c8f7525)
 
 Resource-based policies in AWS are a type of access policy that is associated with an AWS resource. These policies define who has access to the resource and what actions they can perform on it. Unlike identity-based policies, which are attached to IAM users, groups, or roles, resource-based policies are attached directly to the AWS resource itself.
