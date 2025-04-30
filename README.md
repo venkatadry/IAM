@@ -65,9 +65,11 @@ These managed policies are designed to make it easy to assign common permissions
 ***2.Customer managed policies***
 ![image](https://github.com/user-attachments/assets/7deb2d08-9a4c-4db6-8ed3-e6e9320082ce)
 
-Managed policies that you create and manage in your AWS account. Customer managed policies provide more precise control over your policies than AWS managed policies or in other words They provide more flexibility and control over the permissions you want to grant. You can create and attach customer managed policies to IAM identities.
-
-You can create standalone policies in your own AWS account that you can attach to principal entities (users, groups, and roles). You create these customer managed policies for your specific use cases, and you can change and update them as often as you like. Like AWS managed policies, when you attach a policy to a principal entity, you give the entity the permissions that are defined in the policy. When you update permissions in the policy, the changes are applied to all principal entities that the policy is attached to.
+| Policy Type          | Created By      | Customizable | Reusable | Best For                                 |
+|----------------------|------------------|--------------|----------|------------------------------------------|
+| Customer Managed     | You              | ✅ Yes       | ✅ Yes   | Custom, organization-specific use cases  |
+| AWS Managed          | AWS              | ❌ No        | ✅ Yes   | Common, general-purpose use cases        |
+| Inline               | You (per entity) | ✅ Yes       | ❌ No    | One-off, entity-specific permissions     |
 
 Example of a Customer Managed Policy:
 
