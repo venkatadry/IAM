@@ -134,7 +134,7 @@ But it only allow m to list objects in testabpvc bucket
 	"Statement": [ 
 	{
 	"one statement"
-	}
+	},
 	{
 	"second statement"
 	}
