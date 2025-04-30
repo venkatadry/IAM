@@ -323,10 +323,24 @@ The first statement allows the root user of the account with account-ID-without-
 The second statement allows the root user of another AWS account (another-account-ID) to upload objects to the "uploaded-files" directory within the same bucket.
 Resource-based policies play a crucial role in managing access to AWS resources, especially in scenarios where sharing resources across accounts or defining access at the resource level is required. They provide a flexible and granular way to control access to resources within the AWS environment.
 
+***Example : Lambda Function Resource Policy Allowing EventBridge to Invoke It***
 
 
-
-
+```{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowEventBridgeInvoke",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "events.amazonaws.com"
+      },
+      "Action": "lambda:InvokeFunction",
+      "Resource": "arn:aws:lambda:us-east-1:111122223333:function:my-function"
+    }
+  ]
+}
+```
 .
 
 ***3️⃣ Permissions boundaries***
