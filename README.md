@@ -264,7 +264,16 @@ Defined: Directly within a single IAM identity (user, group, or role).
 
 ***⇨ Choosing between managed policies and inline policies***
 
-When making the decision between managed policies and inline policies in AWS IAM, it’s essential to weigh the specific needs of your use case against the features each option offers. Managed policies, whether AWS Managed Policies or customer managed, provide predefined sets of permissions and centralized management, making them efficient choices for broad permission assignment and updates. They adhere to best practices, support versioning, and ensure continuity even after deletion. On the other hand, inline policies offer fine-grained customization and are specific to individual IAM entities, making them ideal for entity-specific requirements or temporary permissions. However, managing inline policies requires careful consideration to avoid complexity and ensure alignment with security best practices. Overall, while managed policies are recommended for their convenience and adherence to best practices, inline policies offer flexibility for specific use cases that require tailored permissions.
+| Feature                   | Managed Policies                       | Inline Policies                         |
+|---------------------------|----------------------------------------|-----------------------------------------|
+| Scope                     | Reusable across entities               | Specific to one IAM entity              |
+| Management                | Centralized                            | Decentralized                           |
+| Use Case                  | Broad access needs                     | Fine-grained, entity-specific access    |
+| Lifecycle Independence    | Survives entity deletion               | Deleted with the entity                 |
+| Complexity                | Easier to manage                       | Higher complexity in large environments |
+
+Use ***Managed Policies*** for most cases due to their maintainability and alignment with best practices.
+Use ***Inline Policies*** when unique, granular permissions are required for a specific entity.
 
 
 ***2️⃣ Resource-based policies***
