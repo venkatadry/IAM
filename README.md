@@ -37,6 +37,7 @@ Aws managed policy updates will happen automatically?
 if you lost access key you have to recreate it
 
 Types of IAM Policies:
+
 ***1️⃣ Identity-based policies***
 
 Identity-based policies in AWS Identity and Access Management (IAM) are policies that you attach to IAM identities, such as users, groups, or roles. These policies define the permissions that are granted to the associated identity. In other words, Identity-based policies are JSON permissions policy documents that control what actions an identity (users, groups of users, and roles) can perform, on which resources, and under what conditions.
