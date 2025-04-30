@@ -49,6 +49,7 @@ There are two main types of identity-based policies: managed policies and inline
 Managed policies are standalone policies that you can attach to multiple IAM identities or users, groups, and roles in your AWS account. They are created and managed independently from IAM users, groups, or roles. Managed policies are a powerful tool in IAM, providing a convenient way to assign permissions to IAM entities. They contribute to the principle of least privilege by allowing you to grant only the necessary permissions for specific tasks.
 
 Managed policies come in two types:
+
 ***1. AWS managed policies:***
 ![image](https://github.com/user-attachments/assets/6599b558-df1e-407c-a0d6-62661535b12d)
 These are predefined policies created and managed by AWS. Examples include the AWS managed policies for read-only access, administrator access, and more. You can attach these policies to your IAM identities.
