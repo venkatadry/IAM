@@ -265,6 +265,8 @@ Defined: Directly within a single IAM identity (user, group, or role).
 ***⇨ Choosing between managed policies and inline policies***
 
 When making the decision between managed policies and inline policies in AWS IAM, it’s essential to weigh the specific needs of your use case against the features each option offers. Managed policies, whether AWS Managed Policies or customer managed, provide predefined sets of permissions and centralized management, making them efficient choices for broad permission assignment and updates. They adhere to best practices, support versioning, and ensure continuity even after deletion. On the other hand, inline policies offer fine-grained customization and are specific to individual IAM entities, making them ideal for entity-specific requirements or temporary permissions. However, managing inline policies requires careful consideration to avoid complexity and ensure alignment with security best practices. Overall, while managed policies are recommended for their convenience and adherence to best practices, inline policies offer flexibility for specific use cases that require tailored permissions.
+
+
 ***2️⃣ Resource-based policies***
 ![image](https://github.com/user-attachments/assets/84cdd5b6-2da4-432b-b8b1-e91f0c8f7525)
 
