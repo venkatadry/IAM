@@ -6,7 +6,7 @@ I have given this in Bucket policy
         {
             "Sid":"GrantAnonymousReadPermissions",
             "Effect":"Allow",
-            "Principal": "arn:aws:iam::920373005946:user/test-user",
+            "Principal": "arn:aws:iam::92xxxxxx:user/test-user",
             "Action":["s3:GetObject"],
             "Resource":["arn:aws:s3:::xyzkvp/*"]
         }
